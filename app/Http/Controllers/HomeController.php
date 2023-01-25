@@ -33,6 +33,6 @@ class HomeController extends Controller
     }
 
     public function authenticationValidateUser(){
-         return redirect()->away('https://www.google.com');
+         return redirect()->away('https://www.medicapanamericana.com/digital/ebooks/buscador');
     }
 }

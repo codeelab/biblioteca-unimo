@@ -31,7 +31,7 @@ class LoginController extends Controller
             if(auth()->user()->type == 1){
                 return redirect()->route('admin.route');
             } elseif(auth()->user()->type == 0){
-                 return redirect()->away('https://www.google.com');
+                 return redirect()->away('https://www.medicapanamericana.com/digital/ebooks/buscador');
                  auth()->logout();
             }
 
@@ -39,5 +39,14 @@ class LoginController extends Controller
             return redirect()->route('login')->with('error','Your provided information wrong!');
         }
 
+    }
+	public function logout(Request $request)
+    {
+        auth()->logout();
+
+        $request->session()->invalidate();
+
+
+        return redirect('/login');
     }
 }
