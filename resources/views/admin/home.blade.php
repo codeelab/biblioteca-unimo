@@ -17,13 +17,22 @@
 
 
                 <div class="card-body">
-
-                     Bienvenido, {{ Auth::user()->name }} {{ Auth::user()->first_name }}
-
+                    <h4> Bienvenido, {{ Auth::user()->name }} {{ Auth::user()->first_name }}</h4>
                 </div>
 
             </div>
 
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header">MEDICAPANAMERICANA</h5>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                    <a href="https://www.medicapanamericana.com/mx/iniciar-sesion" target="_blank" ><button class="btn btn-outline-primary" type="button">ENTRAR</button></a>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
