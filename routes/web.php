@@ -17,8 +17,8 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
+Route::get('home', 'HomeController@authenticationValidateUser')->name('guest.route');
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('admin', 'HomeController@authenticationValidateAdmin')->name('admin.route')->middleware('admin');
 Route::get('admin/users', 'AdminController@index')->middleware('admin');
