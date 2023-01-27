@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Events\SessionStarteds;
+use App\Listeners\SessionForget;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -38,5 +42,14 @@ class HomeController extends Controller
 
 
         return redirect()->away('https://www.medicapanamericana.com/digital/ebooks/buscador');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        event(new SessionForget($request));
+        return Redirect::to('login')->with('error', 'Sesión finalizada');
     }
 }

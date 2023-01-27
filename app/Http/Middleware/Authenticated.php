@@ -14,7 +14,7 @@ class Authenticated
             return $next($request);
         }
 
-        return redirect('home')->with('error', "You have no proper authentication to access the area!");
+        return redirect('login')->with('error', "You have no proper authentication to access the area!");
 
     }
 }

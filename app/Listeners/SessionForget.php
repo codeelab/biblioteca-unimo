@@ -2,12 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Events\SessionStarteds;
+use App\Events\SessionForgets;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Auth;
 
-class LogoutUser
+class SessionForget
 {
     /**
      * Create the event listener.
@@ -22,11 +23,12 @@ class LogoutUser
     /**
      * Handle the event.
      *
-     * @param  SessionStarteds  $event
+     * @param  SessionForget  $event
      * @return void
      */
-    public function handle(SessionStarteds $event)
+    public function handle(SessionForget $event)
     {
-        $event->request->session()->forget('url.intended');
+        Auth::logout();
+        $event->request->session::put('url.intended', URL::full()); 
     }
 }

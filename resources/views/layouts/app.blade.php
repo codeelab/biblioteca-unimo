@@ -33,49 +33,6 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul></ul>
                     </div>
-                @else
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <a href="{{ url('/admin') }}" class="{{ request()->is('/admin') ? 'nav-item nav-link active' : 'nav-item nav-link' }}">
-                            <div class="d-inline-block icons-sm mr-1"><i class="fal fa-home"></i></div>
-                            <span>Administrador</span>
-                        </a>
-                        <a href="{{ url('/admin/users') }}" class="{{ request()->is('/admin/users') ? 'nav-item nav-link active' : 'nav-item nav-link' }}">
-                            <div class="d-inline-block icons-sm mr-1"><i class="fal fa-users"></i></div>
-                            <span>Usuarios</span>
-                        </a>
-                        <a href="{{ url('/admin/crear') }}" class="{{ request()->is('/admin/crear') ? 'nav-item nav-link active' : 'nav-item nav-link' }}">
-                            <div class="d-inline-block icons-sm mr-1"><i class="fal fa-list-ol"></i></div>
-                            <span>Crear</span>
-                        </a>
-                    </ul>
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
                 @endguest
             </div>
         </nav>
@@ -84,5 +41,18 @@
             @yield('content')
         </main>
     </div>
+<script type="text/javascript">
+
+    function storageChange (event) {
+      if(localStorage.logeado=="false"){
+         window.location.replace("/login"); //si el uuario hizo logout
+      }else
+         window.location.reload(true); //si el usuario se logueo
+      }
+
+    window.addEventListener('storage', storageChange, false)
+
+</script>
+<script type="text/javascript">window.localStorage.setItem('logeado', true);</script>
 </body>
 </html>
