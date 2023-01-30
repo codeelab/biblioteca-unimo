@@ -29,7 +29,7 @@
                 <h5 class="card-header">MEDICAPANAMERICANA</h5>
                 <div class="card-body">
                     <div class="d-grid gap-2">
-                    <a href="https://www.medicapanamericana.com/mx/iniciar-sesion" target="_blank" ><button class="btn btn-outline-primary" type="button">ENTRAR</button></a>
+                    <a href="https://www.medicapanamericana.com/digital/ebooks/buscador" target="_blank" ><button class="btn btn-outline-primary" type="button">ENTRAR</button></a>
                     </div>
                 </div>
             </div>

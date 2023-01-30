@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserStoreRequest;
 
 class UsersController extends Controller
@@ -27,7 +28,16 @@ class UsersController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        $user = User::create($request->all());
+        
+        $user = User::create([
+            'name'          => $request->name,
+            'first_name'    => $request->first_name,
+            'last_name'     => $request->last_name,
+            'enrolment'     => $request->enrolment,
+            'email'         => $request->email,
+            'password'      => Hash::make($request->password),
+            'type'          => $request->type,
+        ]);
 
         return redirect()->route('users.create')
         ->with('success','Usuario creado correctamente!');
